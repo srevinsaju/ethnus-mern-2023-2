@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 7 - 21BCE5841</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      table.regid {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      table.regid th,
+      table.regid td {
+        text-align: left;
+        padding: 8px;
+        border: black 1px solid;
+      }
+      table.regid tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #train {
+          animation: move 4s linear infinite ;
+          animation-play-state: paused;
+      }
+      @keyframes move{
+          0% {padding-left: 0%;}
+          100% {padding-left: 100%;}
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="root">
+      <h1>Task 6</h1>
+
+      <table class="regid">
+        <tr>
+          <td>Registration number</td>
+          <td>21BCE5841</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>Srevin Saju</td>
+        </tr>
+      </table>
+      <br />
+
+      <div>
+        <img id="train" src="https://t4.ftcdn.net/jpg/01/21/25/71/360_F_121257142_wYvETURglwvW5BJF5e2Dvant28dJQJ0C.jpg" alt="train" height="100px">
+
+        <h1>Click the following buttons to handle animation</h1>
+        <div>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        function start(){
+          document.getElementById("train").style.animationPlayState = "running";
+        }
+        function stop(){
+            document.getElementById("train").style.animationPlayState = "paused";
+        }
+        document.getElementById('start').onclick = start 
+        document.getElementById("stop").onclick = stop 
+      })
+      
+    </script>
+
+  </body>
+</html>

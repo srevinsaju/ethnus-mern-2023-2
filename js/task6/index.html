@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 6 - 21BCE5841</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      table.regid {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      table.regid th,
+      table.regid td {
+        text-align: left;
+        padding: 8px;
+        border: black 1px solid;
+      }
+      table.regid tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="root">
+      <h1>Task 6</h1>
+
+      <table class="regid">
+        <tr>
+          <td>Registration number</td>
+          <td>21BCE5841</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>Srevin Saju</td>
+        </tr>
+      </table>
+      <br />
+
+
+    
+      <div class="container-lg mt-5">
+        <div class="row justify-content-center">
+            <div style="height: 310px; width: 300px; box-shadow: 0px 2px 5px 0px rgb(123, 123, 123);
+            border-radius: 3px; padding: 30px; background-color: rgba(235, 235, 235, 0.427);">
+                <form class="form" action="https://www.instagram.com/accounts/login/" onsubmit="return check()">
+                    <div class="title d-flex justify-content-center mb-2" style="font-size: 2.25em; font-family: 'Times New Roman', Times, serif;"><i><b>Instagram</b></i></div>
+                    <div class="mb-3 input-group">
+                        <span class="input-group-text" style="border-radius: 0%;">
+                            <span class="tt" data-bs-placement="bottom" title="Your username should contain alphabets and can also contain . , _ , number but cannot start a with number">
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" id="username" placeholder="Username" style="border-radius: 0;" required>
+                    </div>
+                    <div class="mb-3 input-group">
+                        <span class="input-group-text" style="border-radius: 0%;">
+                            <span class="tt" data-bs-placement="bottom" title="Your Password should contain minimum of 8 characters which should include atleast 1 symbol, 1 number, uppercase and lowercase characters but cannot start a with number">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                        </span>
+                        <input type="password" class="form-control" id="password" placeholder="Password" style="border-radius: 0;" required>
+                    </div>
+                    <div>
+                        <input type="submit" class="form-control bg-primary text-light fw-bold" id="submit" style="border-radius: 1; padding: 10px;" value="Log in">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 mb-4" style="font-size: smaller;">
+                        <span>
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </span>
+                        <a href="#" class="text-decoration-none">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex justify-content-center my-3" style="font-size: smaller;">
+                Don't have an account!&nbsp;
+                <a href="#" class="text-decoration-none">Sign up here</a>.
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+      const isValidUrl = (urlString) => {
+          const inputElement = document.createElement('input');
+          inputElement.type = 'url';
+          inputElement.value = urlString;
+          return inputElement.checkValidity();
+      };
+
+      const validateForm = () => {
+          let flag = 0;
+          const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          const elements = {
+              name: { element: document.getElementById('name'), error: '.name-invalid', message: 'This field is required' },
+              email: { element: document.getElementById('email'), error: '.email-invalid', message: 'A valid email address is required' },
+              website: { element: document.querySelector("#website"), error: '.url-invalid', message: 'A valid URL is required' },
+              message: { element: document.getElementById('message'), error: '.message-invalid', message: 'This field is required' }
+          };
+
+          for (const key in elements) {
+              const element = elements[key];
+              const inputValue = element.element.value.trim();
+              const errorElement = document.querySelector(element.error);
+              
+              if (inputValue === "") {
+                  flag = 1;
+                  element.element.style.borderColor = "red";
+                  element.element.style.borderWidth = "3px";
+                  errorElement.innerText = element.message;
+                  errorElement.style.color = "red";
+              } else if (key === 'email' && !inputValue.match(validRegex)) {
+                  flag = 1;
+                  element.element.style.borderColor = "red";
+                  element.element.style.borderWidth = "3px";
+                  errorElement.innerText = element.message;
+                  errorElement.style.color = "red";
+              } else if (key === 'website' && (inputValue === "" || !isValidUrl(inputValue))) {
+                  flag = 1;
+                  element.element.style.borderColor = "red";
+                  element.element.style.borderWidth = "3px";
+                  errorElement.innerText = element.message;
+                  errorElement.style.color = "red";
+              }
+          }
+
+          if (flag === 0) {
+              window.location.href = elements.website.element.value.trim();
+          }
+      };
+
+      document.querySelector("button").addEventListener("click", validateForm);
+
+      
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - 21BCE5841</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+        table.regid {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table.regid th,
+        table.regid td {
+            text-align: left;
+            padding: 8px;
+            border: black 1px solid;
+        }
+
+        table.regid tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="root">
+        <h1>Task 8</h1>
+
+        <table class="regid">
+            <tr>
+                <td>Registration number</td>
+                <td>21BCE5841</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>Srevin Saju</td>
+            </tr>
+        </table>
+        <br />
+
+        <div>
+            <div style="width: 100%">
+                <form action="https://www.ethnus.com" onsubmit="return verify()">
+                    <table class="table caption-top table-borderless" style="width: 100%;">
+                        <caption style="text-align: center;"><h2 style="color: blue;"><b>Registration form</b></h2>
+                        </caption>
+                        <tr>
+                            <td><label for="fn">First Name</label></td>
+                            <td><input type="text" id="fn"></td>
+                            <td><span id="fnpop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ln">Last Name</label></td>
+                            <td><input type="text" id="ln"></td>
+                            <td><span id="lnpop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="mail">Email</label></td>
+                            <td><input type="email" id="mail"></td>
+                            <td><span id="mailpop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="pass">Password</label></td>
+                            <td><input type="password" id="pass"></td>
+                            <td><span id="passpop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="repass">Re-enter password</label></td>
+                            <td><input type="password" id="repass"></td>
+                            <td><span id="repasspop">POOR OR MISMATCH</span></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" for="gender"><label for="gender">Gender</label></td>
+                            <td style="text-align: left;"><input type="radio" value="Male" name="gender" checked>Male
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><input type="radio" value="Female" name="gender">Female
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="age">Age</label></td>
+                            <td><input type="number" id="age"></td>
+                            <td><span id="agepop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phno">Phone Number</label></td>
+                            <td><input type="number" id="phno"></td>
+                            <td><span id="phnopop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="add">Address</label></td>
+                            <td><textarea rows="4" id="add"></textarea></td>
+                            <td><span id="addpop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="state">State</label></td>
+                            <td><input type="text" id="state"></td>
+                            <td><span id="statepop">POOR</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="country">Country</label></td>
+                            <td>
+                                <select id="country">
+                                    <option>Choose your country</option>
+                                    <option value="India">India</option>
+                                    <option value="UK">UK</option>
+                                    <option value="USA">USA</option>
+                                    <option value="China">China</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><input type="checkbox" checked>&nbsp;Hereby
+                                I declare all the given details are true</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;">Log in to <a
+                                    href="https://ethnus.com/">Ethnus</a> website</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><button type="submit">Register</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkInput(id, minLength) {
+            var input = document.getElementById(id).value;
+            var element = document.getElementById(id + 'pop');
+            if (input.length < minLength) {
+                element.innerHTML = 'POOR';
+                element.style.color = 'red';
+                return false;
+            } else {
+                element.innerHTML = 'Good';
+                element.style.color = 'green';
+                return true;
+            }
+        }
+
+        function verify() {
+            var conditions = [
+                checkInput('fn', 5),
+                checkInput('ln', 5),
+                checkInput('mail', 5),
+                checkInput('pass', 6),
+                checkInput('repass', 6),
+                checkInput('age', 1),
+                checkInput('phno', 10),
+                checkInput('add', 10),
+                checkInput('state', 5)
+            ];
+
+            return conditions.every(function (condition) {
+                return condition;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+              const inputFields = document.querySelectorAll("input");
+            inputFields.forEach(function (input) {
+                input.addEventListener("keyup", function () {
+                    verify();
+                });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
